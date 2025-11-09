@@ -2,33 +2,38 @@ pkgtype: exe+lib
 summary: Tools and libraries to manipulate images in many formats
 git-url: https://github.com/ImageMagick/ImageMagick
 web-url: https://imagemagick.org/
-src-url: https://imagemagick.org/archive/releases/ImageMagick-7.1.1-47.tar.xz
-src-sha: 2396cd3c4237cfbc09a89d31d1cee157ee11fbc8ec1e540530e10175cb707160
+src-url:
+https://imagemagick.org/archive/releases/ImageMagick-7.1.1-47.tar.xz
+src-sha:
+2396cd3c4237cfbc09a89d31d1cee157ee11fbc8ec1e540530e10175cb707160
 license: ImageMagick
-dep-pkg: ghostscript-dev libheif liblqr libltdl
+dep-pkg: ghostscript-dev libheif liblqr libltdl libraw
 
 install: |
-    configure \
-        --with-freetype=yes \
-        --with-gvc=no \
-        --with-modules \
-        --with-openjp2 \
-        --with-openexr \
-        --with-webp=yes \
-        --with-heic=yes \
-        --with-gslib \
-        --with-pango \
-        --with-lqr \
-        --without-x \
-        --without-wmf \
-        --without-fftw \
-        --disable-opencl \
-        --enable-openmp \
-        --enable-delegate-build
+  configure \
+      --with-freetype=yes \
+      --with-gvc=no \
+      --with-modules \
+      --with-openjp2 \
+      --with-openexr \
+      --with-webp=yes \
+      --with-heic=yes \
+      --with-gslib \
+      --with-pango \
+      --with-lqr \
+      --with-raw=yes \
+      --without-x \
+      --without-wmf \
+      --without-fftw \
+      --disable-opencl \
+      --enable-openmp \
+      --enable-delegate-build
 
 caveats: |
-    The following environment variables should be set if you move/copy this software to other location
+  The following environment variables should be set if you
+move/copy this software to other location
 
-    export MAGICK_HOME=/somewhere
-    export MAGICK_CODER_MODULE_PATH="$MAGICK_HOME/lib/ImageMagick-7.1.1/modules-Q16HDRI/coders"
-    export MAGICK_CONFIGURE_PATH="$MAGICK_HOME/etc/ImageMagick-7"
+  export MAGICK_HOME=/somewhere
+  export MAGICK_CODER_MODULE_PATH="$MAGICK_HOME/lib/ImageMagick-7.
+1.1/modules-Q16HDRI/coders"
+  export MAGICK_CONFIGURE_PATH="$MAGICK_HOME/etc/ImageMagick-7"
